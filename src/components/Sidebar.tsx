@@ -226,7 +226,7 @@ export default function Sidebar({ mobileOpen, onCloseMobile, collapsed, onToggle
         <>
           <div onClick={onCloseMobile} className="lg:hidden"
             style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 40 }} />
-          <div className="lg:hidden" style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 50 }}>
+          <div className="lg:hidden" style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 50, width: 'min(240px, 85vw)' }}>
             <SidebarInner collapsed={false} onToggleCollapse={onToggleCollapse} onClose={onCloseMobile} isMobile />
           </div>
         </>

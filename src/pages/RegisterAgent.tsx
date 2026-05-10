@@ -44,7 +44,7 @@ const selectStyle = (error?: boolean): React.CSSProperties => ({
 
 function SectionCard({ number, title, children }: { number: string; title: string; children: React.ReactNode }) {
   return (
-    <div style={{ background: CARD, border: `1px solid ${BORDER}`, borderRadius: '16px', padding: '24px', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', marginBottom: '16px' }}>
+    <div style={{ background: CARD, border: `1px solid ${BORDER}`, borderRadius: '16px', padding: 'clamp(14px, 4vw, 24px)', boxShadow: '0 1px 3px rgba(0,0,0,0.05)', marginBottom: '16px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', paddingBottom: '14px', borderBottom: `1px solid ${BORDER}` }}>
         <div style={{
           width: '24px', height: '24px', borderRadius: '6px',
@@ -136,7 +136,7 @@ export default function RegisterAgent() {
   }
 
   return (
-    <div style={{ maxWidth: '720px', margin: '0 auto' }}>
+    <div style={{ maxWidth: '720px', margin: '0 auto', width: '100%' }}>
       <div style={{ marginBottom: '28px' }}>
         <h1 style={{ fontSize: 'clamp(22px, 4vw, 28px)', fontWeight: 800, color: TEXT_PRIMARY, letterSpacing: '-0.6px', marginBottom: '8px' }}>
           Register an Agent
@@ -201,7 +201,7 @@ export default function RegisterAgent() {
             <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: TEXT_SECONDARY, marginBottom: '10px' }}>
               Risk Level <span style={{ color: '#EF4444' }}>*</span>
             </label>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px' }}>
               {riskOptions.map(({ level, desc, color, bg }) => (
                 <button key={level} type="button" onClick={() => { setForm((f) => ({ ...f, riskLevel: level })); setErrors((e) => ({ ...e, riskLevel: '' })); }}
                   style={{
@@ -245,7 +245,7 @@ export default function RegisterAgent() {
         </SectionCard>
 
         {/* Footer */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', marginTop: '8px', paddingBottom: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap', marginTop: '8px', paddingBottom: '8px' }}>
           <p style={{ fontSize: '12px', color: TEXT_MUTED, maxWidth: '380px', lineHeight: 1.5 }}>
             By submitting, you confirm this agent complies with organizational AI policies and accept responsibility as the designated owner.
           </p>

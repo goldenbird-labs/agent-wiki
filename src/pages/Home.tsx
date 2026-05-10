@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <div style={{ maxWidth: '900px', margin: '0 auto' }}>
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '48px', paddingTop: '16px' }}>
+      <div style={{ textAlign: 'center', marginBottom: 'clamp(24px, 6vw, 48px)', paddingTop: '16px' }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center', gap: '7px',
           background: 'rgba(79,70,229,0.08)', border: '1px solid #C7D2FE',
@@ -76,7 +76,7 @@ export default function Home() {
       </div>
 
       {/* 4 Tiles */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
         {tiles.map(({ icon: Icon, label, desc, to, action, iconGradient, accent, accentBg, accentBorder, stat }) => {
           const card = (
             <div

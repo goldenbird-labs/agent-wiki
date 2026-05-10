@@ -78,7 +78,7 @@ export default function Dashboard() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(155px, 1fr))', gap: '12px', marginBottom: '22px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '12px', marginBottom: '22px' }}>
         {stats.map(({ label, value, icon: Icon, color, bg }) => (
           <div key={label} style={{ background: CARD, border: `1px solid ${BORDER}`, borderRadius: '14px', padding: '16px 18px', display: 'flex', alignItems: 'center', gap: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
             <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -230,7 +230,7 @@ export default function Dashboard() {
                       <span style={{ fontSize: '10.5px', fontWeight: 600, color: up ? '#059669' : '#DC2626', background: up ? '#ECFDF5' : '#FEF2F2', borderRadius: '5px', padding: '1px 5px' }}>
                         {up ? '↑' : '↓'}{Math.abs(trend)}%
                       </span>
-                      <span style={{ fontSize: '11.5px', fontWeight: 700, color: TEXT_PRIMARY, minWidth: '46px', textAlign: 'right' }}>
+                      <span style={{ fontSize: '11.5px', fontWeight: 700, color: TEXT_PRIMARY, textAlign: 'right' }}>
                         {calls.toLocaleString()}
                       </span>
                     </div>

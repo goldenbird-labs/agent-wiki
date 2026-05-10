@@ -21,7 +21,10 @@ export default function Layout() {
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', minWidth: 0 }}>
         <TopBar onOpenMobileMenu={() => setMobileMenuOpen(true)} />
-        <main style={{ flex: 1, overflowY: 'auto', padding: '28px 28px 60px' }}>
+        <main style={{
+          flex: 1, overflowY: 'auto',
+          padding: 'clamp(16px, 3vw, 28px) clamp(12px, 3vw, 28px) 60px',
+        }}>
           <Outlet />
         </main>
       </div>

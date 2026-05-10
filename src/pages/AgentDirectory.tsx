@@ -211,7 +211,7 @@ export default function AgentDirectory() {
                   </p>
 
                   {/* Meta */}
-                  <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginBottom: '10px' }}>
+                  <div style={{ display: 'flex', gap: 'clamp(8px, 3vw, 16px)', flexWrap: 'wrap', marginBottom: '10px' }}>
                     {[
                       ['Owner', agent.owner],
                       ['Dept', agent.department],
