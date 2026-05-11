@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Home, LayoutDashboard, Bot, ClipboardPlus,
-  BookOpen, ShieldCheck, ChevronsRight, ChevronsLeft, X,
+  BookOpen, ShieldCheck, ChevronsRight, ChevronsLeft, X, Presentation,
 } from 'lucide-react';
 
 const NAV_ITEMS = [
@@ -10,8 +10,9 @@ const NAV_ITEMS = [
   { icon: LayoutDashboard, label: 'Dashboard',       to: '/dashboard', section: 1 },
   { icon: Bot,             label: 'Agent Directory', to: '/agents',    section: 1 },
   { icon: ClipboardPlus,   label: 'Register Agent',  to: '/register',  section: 1 },
-  { icon: BookOpen,        label: 'Policies',        to: '/policies',  section: 2 },
-  { icon: ShieldCheck,     label: 'Risk & Compliance', to: '/agents',  section: 2 },
+  { icon: BookOpen,        label: 'Policies',          to: '/policies', section: 2 },
+  { icon: ShieldCheck,     label: 'Risk & Compliance', to: '/agents',   section: 2 },
+  { icon: Presentation,    label: 'Demo',               to: '/demo',     section: 3 },
 ];
 
 interface Props {

@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import AgentDirectory from './pages/AgentDirectory';
 import RegisterAgent from './pages/RegisterAgent';
 import PoliciesGuidelines from './pages/PoliciesGuidelines';
+import Demo from './pages/Demo';
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
             <Route path="agents" element={<AgentDirectory />} />
             <Route path="register" element={<RegisterAgent />} />
             <Route path="policies" element={<PoliciesGuidelines />} />
+            <Route path="demo" element={<Demo />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>
