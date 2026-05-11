@@ -206,7 +206,6 @@ function DashboardMockup() {
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function Demo() {
   const { openChat } = useChatContext();
-  const [activeTab, setActiveTab] = useState<'without' | 'with'>('without');
 
   return (
     <div>
@@ -379,7 +378,7 @@ export default function Demo() {
         </div>
       </Reveal>
 
-      {/* ── BEFORE / AFTER ── */}
+      {/* ── BEFORE / AFTER side-by-side ── */}
       <Reveal>
         <div style={{ marginBottom: '72px' }}>
           <div style={{ textAlign: 'center', marginBottom: '32px' }}>
@@ -389,44 +388,56 @@ export default function Demo() {
             <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 34px)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.6px' }}>What changes when you deploy AgentWiki</h2>
           </div>
 
-          {/* Tab toggle */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '24px' }}>
-            {(['without', 'with'] as const).map((tab) => (
-              <button key={tab} onClick={() => setActiveTab(tab)} style={{
-                padding: '9px 22px', borderRadius: '10px', fontWeight: 600, fontSize: '13px', cursor: 'pointer', border: 'none',
-                background: activeTab === tab ? (tab === 'without' ? '#EF4444' : '#10B981') : '#F1F5F9',
-                color: activeTab === tab ? '#fff' : '#64748B',
-                transition: 'all 0.2s ease',
-                boxShadow: activeTab === tab ? `0 4px 14px ${tab === 'without' ? 'rgba(239,68,68,0.35)' : 'rgba(16,185,129,0.35)'}` : 'none',
-              }}>
-                {tab === 'without' ? '✗ Without AgentWiki' : '✓ With AgentWiki'}
-              </button>
-            ))}
-          </div>
-
-          <div style={{ background: '#FFFFFF', border: `1px solid ${activeTab === 'without' ? '#FEE2E2' : '#D1FAE5'}`, borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', transition: 'border-color 0.3s ease' }}>
-            <div style={{ background: activeTab === 'without' ? '#FFF1F2' : '#F0FDF4', padding: '14px 24px', borderBottom: `1px solid ${activeTab === 'without' ? '#FEE2E2' : '#D1FAE5'}` }}>
-              <p style={{ fontSize: '13px', fontWeight: 700, color: activeTab === 'without' ? '#DC2626' : '#16A34A' }}>
-                {activeTab === 'without' ? '⚠ Current state for most organizations' : '✓ With AgentWiki deployed'}
-              </p>
-            </div>
-            {compareRows.map((row, i) => (
-              <div key={row} style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '14px 24px', borderBottom: i < compareRows.length - 1 ? '1px solid #F1F5F9' : 'none', transition: 'background 0.2s ease' }}>
-                <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: activeTab === 'without' ? '#FEF2F2' : '#F0FDF4', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.3s ease' }}>
-                  {activeTab === 'without'
-                    ? <XCircle size={14} color="#EF4444" />
-                    : <CheckCircle size={14} color="#16A34A" />
-                  }
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+            {/* Without column */}
+            <div style={{ background: '#FFFFFF', border: '1px solid #FECACA', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(239,68,68,0.07)' }}>
+              <div style={{ background: 'linear-gradient(135deg, #FFF1F2, #FFF5F5)', padding: '16px 22px', borderBottom: '1px solid #FEE2E2', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <XCircle size={14} color="#EF4444" />
                 </div>
-                <span style={{ fontSize: '13.5px', fontWeight: 500, color: '#0F172A' }}>{row}</span>
-                {activeTab === 'without' && (
-                  <span style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: 600, color: '#EF4444', background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '5px', padding: '2px 8px', whiteSpace: 'nowrap' }}>Gap</span>
-                )}
-                {activeTab === 'with' && (
-                  <span style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: 600, color: '#16A34A', background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '5px', padding: '2px 8px', whiteSpace: 'nowrap' }}>Covered</span>
-                )}
+                <div>
+                  <p style={{ fontSize: '13px', fontWeight: 800, color: '#DC2626' }}>Without AgentWiki</p>
+                  <p style={{ fontSize: '11px', color: '#F87171', marginTop: '1px' }}>Current state for most organizations</p>
+                </div>
               </div>
-            ))}
+              {compareRows.map((row, i) => (
+                <div key={row} style={{
+                  display: 'flex', alignItems: 'center', gap: '12px',
+                  padding: '13px 22px',
+                  borderBottom: i < compareRows.length - 1 ? '1px solid #FFF1F2' : 'none',
+                  background: i % 2 === 0 ? '#FFFFFF' : '#FFFBFB',
+                }}>
+                  <XCircle size={15} color="#FECACA" style={{ flexShrink: 0 }} />
+                  <span style={{ fontSize: '13px', color: '#94A3B8', textDecoration: 'line-through', textDecorationColor: '#FECACA' }}>{row}</span>
+                  <span style={{ marginLeft: 'auto', fontSize: '10.5px', fontWeight: 700, color: '#EF4444', background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '5px', padding: '2px 7px', whiteSpace: 'nowrap', flexShrink: 0 }}>Gap</span>
+                </div>
+              ))}
+            </div>
+
+            {/* With column */}
+            <div style={{ background: '#FFFFFF', border: '1px solid #BBF7D0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(16,185,129,0.08)' }}>
+              <div style={{ background: 'linear-gradient(135deg, #F0FDF4, #F7FEF9)', padding: '16px 22px', borderBottom: '1px solid #D1FAE5', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#D1FAE5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <CheckCircle size={14} color="#10B981" />
+                </div>
+                <div>
+                  <p style={{ fontSize: '13px', fontWeight: 800, color: '#059669' }}>With AgentWiki</p>
+                  <p style={{ fontSize: '11px', color: '#34D399', marginTop: '1px' }}>Full governance coverage from day one</p>
+                </div>
+              </div>
+              {compareRows.map((row, i) => (
+                <div key={row} style={{
+                  display: 'flex', alignItems: 'center', gap: '12px',
+                  padding: '13px 22px',
+                  borderBottom: i < compareRows.length - 1 ? '1px solid #F0FDF4' : 'none',
+                  background: i % 2 === 0 ? '#FFFFFF' : '#FAFFFC',
+                }}>
+                  <CheckCircle size={15} color="#10B981" style={{ flexShrink: 0 }} />
+                  <span style={{ fontSize: '13px', fontWeight: 500, color: '#0F172A' }}>{row}</span>
+                  <span style={{ marginLeft: 'auto', fontSize: '10.5px', fontWeight: 700, color: '#059669', background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '5px', padding: '2px 7px', whiteSpace: 'nowrap', flexShrink: 0 }}>✓ Live</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Reveal>
