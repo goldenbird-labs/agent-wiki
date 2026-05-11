@@ -267,11 +267,11 @@ export default function Demo() {
             { title: 'Audit prep consumes weeks', stat: '3–6 wks', statLabel: 'average audit preparation time', icon: Clock },
             { title: 'Shadow AI is a silent liability', stat: '43%', statLabel: 'of breaches involve unregistered AI', icon: ShieldCheck },
           ].map(({ title, stat, statLabel, icon: Icon }) => (
-            <div key={title} className="demo-hover" style={{ background: '#FFF8F8', border: '1px solid #FEE2E2', borderRadius: '12px', padding: '20px', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+            <div key={title} className="demo-hover" style={{ background: '#FFF8F8', border: '1px solid #FEE2E2', borderRadius: '12px', padding: '20px', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column' }}>
               <div style={{ width: '36px', height: '36px', borderRadius: '9px', background: '#FEF2F2', border: '1px solid #FECACA', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
                 <Icon size={16} color="#EF4444" />
               </div>
-              <h3 style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', marginBottom: '12px', lineHeight: 1.4 }}>{title}</h3>
+              <h3 style={{ fontSize: '13px', fontWeight: 700, color: '#0F172A', marginBottom: '12px', lineHeight: 1.4, flexGrow: 1 }}>{title}</h3>
               <div style={{ borderTop: '1px solid #FEE2E2', paddingTop: '12px' }}>
                 <span style={{ fontSize: '22px', fontWeight: 900, color: '#EF4444', letterSpacing: '-0.5px' }}>{stat}</span>
                 <p style={{ fontSize: '11px', color: '#94A3B8', marginTop: '2px' }}>{statLabel}</p>
@@ -396,17 +396,17 @@ export default function Demo() {
       <Section number="06" label="IMPLEMENTATION" labelColor="#10B981" labelBg="rgba(16,185,129,0.08)" labelBorder="rgba(16,185,129,0.2)" bg="#FFFFFF">
         <h2 style={{ fontSize: 'clamp(22px,3vw,30px)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.5px', marginBottom: '8px' }}>Live in 4 weeks, value from day one</h2>
         <p style={{ fontSize: '14.5px', color: '#64748B', lineHeight: 1.65, marginBottom: '32px', maxWidth: '500px' }}>No lengthy implementations. AgentWiki is operational within a week and delivering measurable governance in the first month.</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(190px,1fr))', gap: '12px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(190px,1fr))', gap: '12px', alignItems: 'stretch' }}>
           {timeline.map(({ n, week, title, desc, color }, i) => (
             <Reveal key={n} delay={i * 80}>
-              <div className="demo-hover" style={{ background: '#FAFAFA', border: '1px solid #E2E8F0', borderRadius: '14px', padding: '22px', position: 'relative', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+              <div className="demo-hover" style={{ background: '#FAFAFA', border: '1px solid #E2E8F0', borderRadius: '14px', padding: '22px', position: 'relative', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', height: '100%', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: `linear-gradient(90deg,${color},${color}50)` }} />
                 <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: `${color}15`, border: `2px solid ${color}`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
                   <span style={{ fontSize: '13px', fontWeight: 800, color }}>{n}</span>
                 </div>
                 <p style={{ fontSize: '10.5px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.5px', marginBottom: '4px' }}>{week.toUpperCase()}</p>
                 <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>{title}</h3>
-                <p style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.6 }}>{desc}</p>
+                <p style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.6, flexGrow: 1 }}>{desc}</p>
               </div>
             </Reveal>
           ))}
