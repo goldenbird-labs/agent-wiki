@@ -388,35 +388,35 @@ export default function Demo() {
             <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 34px)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.6px' }}>What changes when you deploy AgentWiki</h2>
           </div>
 
-          <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
-            {/* Header row */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 160px 160px' }}>
-              <div style={{ padding: '14px 24px', background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+          <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)', maxWidth: '680px', margin: '0 auto' }}>
+            {/* Header */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>
+              <div style={{ padding: '13px 20px', background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
                 <span style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.6px' }}>CAPABILITY</span>
               </div>
-              <div style={{ padding: '14px 20px', background: '#FFF1F2', borderBottom: '1px solid #FECACA', borderLeft: '1px solid #FECACA', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                <XCircle size={13} color="#EF4444" />
+              <div style={{ padding: '13px 20px', background: '#FFF1F2', borderBottom: '1px solid #FECACA', borderLeft: '1px solid #FECACA', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                <XCircle size={12} color="#EF4444" />
                 <span style={{ fontSize: '12px', fontWeight: 700, color: '#DC2626' }}>Without</span>
               </div>
-              <div style={{ padding: '14px 20px', background: '#F0FDF4', borderBottom: '1px solid #BBF7D0', borderLeft: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                <CheckCircle size={13} color="#10B981" />
+              <div style={{ padding: '13px 20px', background: '#F0FDF4', borderBottom: '1px solid #BBF7D0', borderLeft: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                <CheckCircle size={12} color="#10B981" />
                 <span style={{ fontSize: '12px', fontWeight: 700, color: '#059669' }}>With AgentWiki</span>
               </div>
             </div>
 
-            {/* Data rows */}
+            {/* Rows */}
             {compareRows.map((row, i) => {
               const isLast = i === compareRows.length - 1;
               const alt = i % 2 !== 0;
               return (
-                <div key={row} style={{ display: 'grid', gridTemplateColumns: '1fr 160px 160px', borderBottom: isLast ? 'none' : '1px solid #F1F5F9' }}>
-                  <div style={{ padding: '14px 24px', background: alt ? '#FAFAFA' : '#FFFFFF', display: 'flex', alignItems: 'center' }}>
-                    <span style={{ fontSize: '13.5px', fontWeight: 500, color: '#0F172A' }}>{row}</span>
+                <div key={row} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', borderBottom: isLast ? 'none' : '1px solid #F1F5F9' }}>
+                  <div style={{ padding: '12px 20px', background: alt ? '#FAFAFA' : '#FFFFFF', display: 'flex', alignItems: 'center' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 500, color: '#0F172A' }}>{row}</span>
                   </div>
-                  <div style={{ padding: '14px 20px', background: alt ? '#FFFBFB' : '#FFFFFF', borderLeft: '1px solid #FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ padding: '12px 20px', background: alt ? '#FFFBFB' : '#FFFFFF', borderLeft: '1px solid #FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontSize: '11px', fontWeight: 700, color: '#EF4444', background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '5px', padding: '3px 10px' }}>Gap</span>
                   </div>
-                  <div style={{ padding: '14px 20px', background: alt ? '#FAFFFE' : '#FFFFFF', borderLeft: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ padding: '12px 20px', background: alt ? '#FAFFFE' : '#FFFFFF', borderLeft: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontSize: '11px', fontWeight: 700, color: '#059669', background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '5px', padding: '3px 10px' }}>✓ Live</span>
                   </div>
                 </div>
