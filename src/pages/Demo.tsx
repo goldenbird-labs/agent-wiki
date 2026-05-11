@@ -388,56 +388,40 @@ export default function Demo() {
             <h2 style={{ fontSize: 'clamp(24px, 3.5vw, 34px)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.6px' }}>What changes when you deploy AgentWiki</h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-            {/* Without column */}
-            <div style={{ background: '#FFFFFF', border: '1px solid #FECACA', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(239,68,68,0.07)' }}>
-              <div style={{ background: 'linear-gradient(135deg, #FFF1F2, #FFF5F5)', padding: '16px 22px', borderBottom: '1px solid #FEE2E2', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <XCircle size={14} color="#EF4444" />
-                </div>
-                <div>
-                  <p style={{ fontSize: '13px', fontWeight: 800, color: '#DC2626' }}>Without AgentWiki</p>
-                  <p style={{ fontSize: '11px', color: '#F87171', marginTop: '1px' }}>Current state for most organizations</p>
-                </div>
+          <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}>
+            {/* Header row */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 160px 160px' }}>
+              <div style={{ padding: '14px 24px', background: '#F8FAFC', borderBottom: '1px solid #E2E8F0' }}>
+                <span style={{ fontSize: '11px', fontWeight: 700, color: '#94A3B8', letterSpacing: '0.6px' }}>CAPABILITY</span>
               </div>
-              {compareRows.map((row, i) => (
-                <div key={row} style={{
-                  display: 'flex', alignItems: 'center', gap: '12px',
-                  padding: '13px 22px',
-                  borderBottom: i < compareRows.length - 1 ? '1px solid #FFF1F2' : 'none',
-                  background: i % 2 === 0 ? '#FFFFFF' : '#FFFBFB',
-                }}>
-                  <XCircle size={15} color="#FECACA" style={{ flexShrink: 0 }} />
-                  <span style={{ fontSize: '13px', color: '#94A3B8', textDecoration: 'line-through', textDecorationColor: '#FECACA' }}>{row}</span>
-                  <span style={{ marginLeft: 'auto', fontSize: '10.5px', fontWeight: 700, color: '#EF4444', background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '5px', padding: '2px 7px', whiteSpace: 'nowrap', flexShrink: 0 }}>Gap</span>
-                </div>
-              ))}
+              <div style={{ padding: '14px 20px', background: '#FFF1F2', borderBottom: '1px solid #FECACA', borderLeft: '1px solid #FECACA', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                <XCircle size={13} color="#EF4444" />
+                <span style={{ fontSize: '12px', fontWeight: 700, color: '#DC2626' }}>Without</span>
+              </div>
+              <div style={{ padding: '14px 20px', background: '#F0FDF4', borderBottom: '1px solid #BBF7D0', borderLeft: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                <CheckCircle size={13} color="#10B981" />
+                <span style={{ fontSize: '12px', fontWeight: 700, color: '#059669' }}>With AgentWiki</span>
+              </div>
             </div>
 
-            {/* With column */}
-            <div style={{ background: '#FFFFFF', border: '1px solid #BBF7D0', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(16,185,129,0.08)' }}>
-              <div style={{ background: 'linear-gradient(135deg, #F0FDF4, #F7FEF9)', padding: '16px 22px', borderBottom: '1px solid #D1FAE5', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#D1FAE5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <CheckCircle size={14} color="#10B981" />
+            {/* Data rows */}
+            {compareRows.map((row, i) => {
+              const isLast = i === compareRows.length - 1;
+              const alt = i % 2 !== 0;
+              return (
+                <div key={row} style={{ display: 'grid', gridTemplateColumns: '1fr 160px 160px', borderBottom: isLast ? 'none' : '1px solid #F1F5F9' }}>
+                  <div style={{ padding: '14px 24px', background: alt ? '#FAFAFA' : '#FFFFFF', display: 'flex', alignItems: 'center' }}>
+                    <span style={{ fontSize: '13.5px', fontWeight: 500, color: '#0F172A' }}>{row}</span>
+                  </div>
+                  <div style={{ padding: '14px 20px', background: alt ? '#FFFBFB' : '#FFFFFF', borderLeft: '1px solid #FEE2E2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#EF4444', background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '5px', padding: '3px 10px' }}>Gap</span>
+                  </div>
+                  <div style={{ padding: '14px 20px', background: alt ? '#FAFFFE' : '#FFFFFF', borderLeft: '1px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontSize: '11px', fontWeight: 700, color: '#059669', background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '5px', padding: '3px 10px' }}>✓ Live</span>
+                  </div>
                 </div>
-                <div>
-                  <p style={{ fontSize: '13px', fontWeight: 800, color: '#059669' }}>With AgentWiki</p>
-                  <p style={{ fontSize: '11px', color: '#34D399', marginTop: '1px' }}>Full governance coverage from day one</p>
-                </div>
-              </div>
-              {compareRows.map((row, i) => (
-                <div key={row} style={{
-                  display: 'flex', alignItems: 'center', gap: '12px',
-                  padding: '13px 22px',
-                  borderBottom: i < compareRows.length - 1 ? '1px solid #F0FDF4' : 'none',
-                  background: i % 2 === 0 ? '#FFFFFF' : '#FAFFFC',
-                }}>
-                  <CheckCircle size={15} color="#10B981" style={{ flexShrink: 0 }} />
-                  <span style={{ fontSize: '13px', fontWeight: 500, color: '#0F172A' }}>{row}</span>
-                  <span style={{ marginLeft: 'auto', fontSize: '10.5px', fontWeight: 700, color: '#059669', background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '5px', padding: '2px 7px', whiteSpace: 'nowrap', flexShrink: 0 }}>✓ Live</span>
-                </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </Reveal>
