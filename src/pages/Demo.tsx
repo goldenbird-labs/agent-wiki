@@ -285,22 +285,22 @@ export default function Demo() {
       <Section number="02" label="THE IMPACT" labelColor="#10B981" labelBg="rgba(16,185,129,0.08)" labelBorder="rgba(16,185,129,0.2)" bg="#F8FAFC">
         <h2 style={{ fontSize: 'clamp(22px,3vw,30px)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.5px', marginBottom: '8px' }}>Measurable outcomes from day one</h2>
         <p style={{ fontSize: '14.5px', color: '#64748B', lineHeight: 1.65, marginBottom: '32px', maxWidth: '500px' }}>Organizations that deploy AgentWiki report significant improvements across risk, compliance, and operational efficiency.</p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(190px,1fr))', gap: '12px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(190px,1fr))', gap: '12px', alignItems: 'stretch' }}>
           {[
-            { value: 73, suffix: '%', label: 'Fewer shadow AI incidents', color: '#10B981', bg: '#F0FDF4', border: '#BBF7D0', icon: ShieldCheck },
-            { value: 61, suffix: '%', label: 'Reduction in AI-related incidents', color: '#6366F1', bg: '#EEF2FF', border: '#C7D2FE', icon: AlertTriangle },
-            { value: 90, suffix: '%', label: 'Faster audit documentation', color: '#F59E0B', bg: '#FFFBEB', border: '#FDE68A', icon: Clock },
+            { value: 73, suffix: '%', label: 'Shadow AI reduction', color: '#10B981', bg: '#F0FDF4', border: '#BBF7D0', icon: ShieldCheck },
+            { value: 61, suffix: '%', label: 'Fewer AI incidents', color: '#6366F1', bg: '#EEF2FF', border: '#C7D2FE', icon: AlertTriangle },
+            { value: 90, suffix: '%', label: 'Faster audit prep', color: '#F59E0B', bg: '#FFFBEB', border: '#FDE68A', icon: Clock },
             { value: 10, suffix: ' wks', label: 'Typical payback period', color: '#0EA5E9', bg: '#F0F9FF', border: '#BAE6FD', icon: TrendingUp },
           ].map(({ value, suffix, label, color, bg, border, icon: Icon }, i) => (
             <Reveal key={label} delay={i * 80}>
-              <div className="demo-hover" style={{ background: bg, border: `1px solid ${border}`, borderRadius: '14px', padding: '22px', textAlign: 'center', boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
-                <div style={{ width: '36px', height: '36px', borderRadius: '9px', background: '#fff', border: `1px solid ${border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px' }}>
+              <div className="demo-hover" style={{ background: bg, border: `1px solid ${border}`, borderRadius: '14px', padding: '22px', textAlign: 'center', boxShadow: '0 1px 3px rgba(0,0,0,0.04)', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '36px', height: '36px', borderRadius: '9px', background: '#fff', border: `1px solid ${border}`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 14px', flexShrink: 0 }}>
                   <Icon size={16} color={color} />
                 </div>
                 <div style={{ fontSize: 'clamp(30px,4vw,40px)', fontWeight: 900, color, letterSpacing: '-1px', lineHeight: 1 }}>
                   <Counter target={value} suffix={suffix} duration={1500} />
                 </div>
-                <p style={{ fontSize: '12px', fontWeight: 600, color: '#0F172A', marginTop: '8px', lineHeight: 1.4 }}>{label}</p>
+                <p style={{ fontSize: '12px', fontWeight: 600, color: '#0F172A', marginTop: '8px', lineHeight: 1.3, whiteSpace: 'nowrap' }}>{label}</p>
               </div>
             </Reveal>
           ))}
